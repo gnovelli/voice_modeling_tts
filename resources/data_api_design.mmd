@@ -1,0 +1,31 @@
+classDiagram
+    class Trainer{
+        +str audio_file
+        +AudioHandler audio_handler
+        +Model model
+        +create_model()
+        +save_model()
+    }
+    class TTS{
+        +str text_file
+        +TextHandler text_handler
+        +Model model
+        +load_model()
+        +perform_tts()
+    }
+    class Model{
+        +dict features
+        +train_model()
+    }
+    class AudioHandler{
+        +str audio_file
+        +extract_features()
+    }
+    class TextHandler{
+        +str text_file
+        +convert_to_speech()
+    }
+    Trainer "1" -- "1" AudioHandler: uses
+    Trainer "1" -- "1" Model: uses
+    TTS "1" -- "1" TextHandler: uses
+    TTS "1" -- "1" Model: uses

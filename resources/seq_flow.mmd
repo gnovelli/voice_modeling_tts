@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant T as Trainer
+    participant A as AudioHandler
+    participant M as Model
+    participant TS as TTS
+    participant TH as TextHandler
+    T->>A: extract_features()
+    A-->>T: features
+    T->>M: train_model(features)
+    M-->>T: model
+    T->>T: save_model()
+    TS->>TH: convert_to_speech()
+    TH-->>TS: speech
+    TS->>M: load_model()
+    M-->>TS: model
+    TS->>TS: perform_tts(speech, model)
