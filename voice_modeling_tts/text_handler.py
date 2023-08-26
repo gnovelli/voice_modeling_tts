@@ -18,5 +18,6 @@ class TextHandler:
         """
         Convert the text to speech using Google Text-to-Speech
         """
+        self.read_text_file()
         tts = gTTS(text=self.text, lang=lang)
         return tts
